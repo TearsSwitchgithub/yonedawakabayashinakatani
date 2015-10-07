@@ -1,0 +1,91 @@
+﻿ページのパスの最後のディレクトリ名取得
+basename(getcwd())
+
+ワードプレスの関数呼び出し
+require("wp-load.php")
+
+ワードプレスのアーカイブページに改行反映
+loop.phpの中の「the_excerpt()」→「the_content()」に変更
+
+メールアドレスのエンティティ化
+<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;<?php
+	$convmap = array(0x0000, 0xffff, 0, 0xffff);
+	$mail_address = mb_encode_numericentity("メールアドレス",$convmap,"UTF-8");
+	echo $mail_address;
+?>"><?php echo $mail_address; ?></a>
+
+IE6のmin-height対策
+min-height: 100px;
+height: auto !important;
+height: 100px;
+
+IE6のmin-width対策
+min-width: 912px;
+_width: expression(document.body.clientWidth < 914? "912px" : "auto");
+
+IE6の透過png対策（背景）
+	_behavior: expression(
+		this.style.behavior || (
+			this.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=crop,src='"+this.currentStyle.getAttribute("backgroundImage").slice(5,-2)+"')",
+			this.style.backgroundImage = "none",
+			this.style.behavior = "none"
+		)
+	);
+
+webfont
+http://www.yomotsu.net/wp/?p=565
+
+aタグのホバーでの透明度変更（※imgタグに指定する）
+filter: alpha(opacity=75);
+-moz-opacity: 0.75;
+opacity: 0.75;
+
+Smartyで配列の添字とval表示
+<!--{$arrProductStatusNew|@debug_print_var}-->
+<!--{$arrProduct|@var_dump}-->
+（どっちでもおｋ）
+
+
+echo "<pre>"; print_r($arrProduct); echo "</pre>";
+
+sqliteのオートインクリメント値のリセット文
+update sqlite_sequence set seq=0 where name='テーブル名';
+
+postgresqlのSERECT文を用いたUPDATE文
+INSERT INTO ma_price (type,paper,size,color,payment_time,sheets,price,del_flg) SELECT type,paper + 56 AS paper,size,color,payment_time,sheets,price,del_flg FROM ma_price WHERE paper=52;
+
+
+
+
+» (&raquo;)
+« (&laquo;)
+
+▷ (&#x25B7;)
+▶ (&#x25B6;)
+◁ (&#x25C1;)
+◀ (&#x25C0;)
+
+²(&sup2;)
+³(&sup3;)
+
+
+TPLパス
+<!--{$TPL_URLPATH}-->
+
+ROOTパス
+<!--{$smarty.const.ROOT_URLPATH}-->
+
+CARTパス
+<!--{$smarty.const.CART_URLPATH}-->
+
+通常TOPパス
+<!--{$smarty.const.HTTP_URL}-->
+
+SSLパス
+<!--{$smarty.const.HTTPS_URL}-->
+
+商品詳細パス（「/products/detail.php?prpduct_id=」まで）
+<!--{$smarty.const.P_DETAIL_URLPATH}-->
+
+ADMIN MENU EDITOR PATH
+/wp-admin/options-general.php?page=menu_editor
