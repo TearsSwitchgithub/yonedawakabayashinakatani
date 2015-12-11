@@ -91,3 +91,4 @@ ADMIN MENU EDITOR PATH
 /wp-admin/options-general.php?page=menu_editor
 
 編集テスト
+編集テスト20151211
